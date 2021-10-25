@@ -1,0 +1,24 @@
+<div *ngIf="pageLoaded">
+    <ng-container *ngIf='movies;else noMovies'>
+        <app-movie-render [movies]='selectedMovies'></app-movie-render>
+        </ng-container>
+        
+        <ng-template #noMovies>
+            <p>No Movies Available.</p>
+        </ng-template>
+        
+        <div class="navigationBtnPanel">
+            <button class="button navigationBtn" [disabled]='pageNo<=1' 
+            (click)="prevPage()"><<</button>
+            
+            <button class="button navigationBtn" 
+            style="cursor: default;">{{pageNo}}</button>
+
+            <button class="button navigationBtn" 
+            [disabled]='pageNo>=total/8' (click)="nextPage()">>></button>
+        </div>
+</div>
+
+<div *ngIf="!pageLoaded" class="is-flex is-justify-content-center">
+    <img [src]="loadingImgPath" alt="Loading image">
+</div>

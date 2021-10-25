@@ -1,0 +1,68 @@
+<div class="panel">
+
+  <div class="tabs is-toggle">
+      <ul>
+        <li [routerLink]="[{outlets: {dashboard: 'home'}}]"  
+        routerLinkActive="is-active">
+          <a >
+            <span>Home</span>
+          </a>
+        </li>
+        <li [routerLink]="[{outlets: {dashboard: 'trending'}}]"  
+        routerLinkActive="is-active">
+          <a >
+            <span>Trending</span>
+          </a>
+        </li>
+        <li [routerLink]="[{outlets: {dashboard: 'featured'}}]"  
+        routerLinkActive="is-active">
+          <a>
+            <span>Featured</span>
+          </a>
+        </li>
+        <li [routerLink]="[{outlets: {dashboard: 'newrelease'}}]"  
+        routerLinkActive="is-active">
+          <a>
+            <span>New Release</span>
+          </a>
+        </li>
+        <li [routerLink]="[{outlets: {dashboard: 'upcoming'}}]"  
+        routerLinkActive="is-active">
+          <a>
+            <span>Upcoming</span>
+          </a>
+        </li>
+        <li [routerLink]="[{outlets: {dashboard: 'mylist'}}]"  
+        routerLinkActive="is-active">
+          <a>
+            <span>My List</span>
+          </a>
+        </li>
+        <li [routerLink]="[{outlets: {dashboard: 'recommended'}}]"  
+        routerLinkActive="is-active">
+          <a>
+            <span>Recommended</span>
+          </a>
+        </li>
+        <ng-container *ngIf="IsAdmin==true">
+          <li style="background-color: orange;" 
+          [routerLink]="[{outlets: {dashboard: 'revoke'}}]"  
+          routerLinkActive="is-active">
+            <a>
+              <span>Revoke Subscription</span>
+            </a>
+          </li>
+          <li style="background-color: orange;" 
+          [routerLink]="[{outlets: {dashboard: 'upload'}}]"  
+          routerLinkActive="is-active">
+            <a>
+              <span>Upload</span>
+            </a>
+          </li>
+        </ng-container>
+      </ul>
+    </div>
+  <div class="renderer">
+    <router-outlet name='dashboard'></router-outlet>
+  </div>
+</div>

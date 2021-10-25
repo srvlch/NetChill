@@ -1,0 +1,31 @@
+/* You can add global styles to this file, and also import other style files */
+@import '../node_modules/bulma/css/bulma.css';
+@import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css";
+
+.req::after{    
+    content: " *";
+    color: red;
+    
+}
+
+.form{
+    padding: 20px;
+}
+
+.error{
+    background-color: red;
+    color: white;
+    font-size: 1.2em;
+    text-align: center;
+}
+
+.navigationBtnPanel{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.navigationBtn{
+   padding:10px;
+   margin: 5px;
+}

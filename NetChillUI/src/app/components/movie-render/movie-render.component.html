@@ -1,0 +1,45 @@
+<div class="outerCard" [class.column-direction]="colDir">
+    <div *ngFor='let movie of movies' class="card" style="width:250px;">
+        <a *ngIf="clickable" href="/moviedetails/{{movie.Id}}">
+        <div class="card-image" >
+          <figure class="image is-4by3">
+            <img src={{movie.PosterPath}} alt="Placeholder image">
+          </figure>
+        </div>
+        <div class="card-content">
+             <div class="media">
+                <div class="media-content">
+                  <p class="title is-4">{{movie.Name}}</p>
+                  <p class="subtitle is-6">{{movie.Category}}</p>
+                  <p class="subtitle is-6"><i class="fa fa-eye" style="opacity: 70%;"></i>
+                    {{movie.Views}}
+                  </p>
+                </div>
+            </div>
+        </div>
+    </a>
+    <div *ngIf="!clickable" > 
+      <div class="card-image" >
+        <figure class="image is-4by3">
+          <img src={{movie.PosterPath}} alt="Placeholder image">
+        </figure>
+      </div>
+      <div class="card-content">
+          <div class="media">
+              <div class="media-content">
+              <p class="title is-4">{{movie.Name}}</p>
+              <p class="subtitle is-6">{{movie.Category}}</p>
+              </div>
+          </div>
+       </div>
+    </div>
+
+          </div>
+
+          <div *ngIf="movies?.length==0">
+            <br>
+            <br>
+            <p>No available movies.</p>
+          </div>
+          
+</div>

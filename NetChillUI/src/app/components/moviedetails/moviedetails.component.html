@@ -1,0 +1,31 @@
+<div *ngIf="pageLoaded" class="card" style="min-height: 500px;">
+    <div class="columns">
+        <div class="column columns is-three-fifths is-flex is-justify-content-center">
+            <video class="column is-half
+            is-offset-one-quarter" 
+            style="height: 300px;width: 500px;margin-top: 200px;"
+            [src]="data?.ContentPath" type="video/mp4" 
+            controls muted preload="metadata"></video>
+        </div>
+        <div class="column is-flex is-flex-direction-column p-6">
+            <button class="button is-rounded is-success" style="width: 200px;" 
+            (click)="AddToList()">{{listButtonText}}</button>
+            <h1 class="title">{{data?.Name}}({{data?.YearOfRelease}})</h1>
+            <h2 class="subtitle">{{data?.Category}}</h2> 
+            <figure style="width: 150px;">
+                <img [src]="data?.PosterPath">
+              </figure>
+              <p class="subtitle is-6">
+                <i class="fa fa-eye" style="opacity: 70%;"></i> {{data?.Views}}</p>
+              <p style="width: 50%;">{{ data?.Description }}</p>
+        </div>
+    </div>
+    <hr>
+    <h1 class="title" style="margin-left: 80px;">Similar Movies</h1>
+    <app-movie-render [movies]="similarMovies" [clickable]="true"></app-movie-render>
+    <br>
+</div>
+
+<div *ngIf="!pageLoaded" class="is-flex is-justify-content-center">
+    <img [src]="loadingImgPath" alt="Loading image">
+</div>

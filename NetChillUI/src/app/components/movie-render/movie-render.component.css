@@ -1,0 +1,13 @@
+.outerCard{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:center;
+}
+
+.card{
+    margin: 10px;
+}
+
+.column-direction{
+    flex-direction: column;
+}

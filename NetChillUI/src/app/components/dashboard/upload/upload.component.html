@@ -1,0 +1,113 @@
+
+<form [formGroup]='formTemplate' (submit)='submit(formTemplate)'>
+    <div class="columns">
+    
+    <div class="column">
+            <img class="img" [src]="imgSrc" >
+        
+        <div class="field">
+            <label class="label req">Poster</label>
+            <div class="control">
+              <input class="input" accept="image/x-png,.jpg" 
+              (change)='ImgChange($event)' formControlName='PosterPath' 
+              type="file" placeholder="Text input" required> 
+            </div>
+        </div>
+    </div>
+    <div class="column">
+
+        <div class="field">
+            <label class="label req">Name</label>
+            <div class="control">
+              <input class="input" formControlName='Name' type="text" 
+              placeholder="Movie name" maxlength=255 pattern="^[a-zA-Z ]*$" 
+              required> 
+            </div>
+            <div 
+            *ngIf="formTemplate.controls.Name.invalid && formTemplate.controls.Name.touched">
+              <p *ngIf="formTemplate.controls.Name.errors?.pattern " 
+              class="help is-danger">Name must contains only characters.</p>
+          </div>
+        </div>
+
+        <div class="field">
+            <label class="label req">Category</label>
+            <div class="control">
+              <input class="input" formControlName='Category' type="text" 
+              placeholder="Category" maxlength=255 pattern="^[a-zA-Z ]*$" required> 
+            </div>
+            <div 
+            *ngIf="formTemplate.controls.Category.invalid && formTemplate.controls.Category.touched">
+              <p *ngIf="formTemplate.controls.Category.errors?.pattern " 
+              class="help is-danger">Category must contains only characters.</p>
+          </div>
+        </div>
+
+        
+        <div class="field">
+            <label class="label req">Year of Release</label>
+            <div class="control">
+              <input class="input" type="number" formControlName='YearOfRelease'
+              placeholder="YYYY" min="1990" max="2021" required> 
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label req">Availability Starts</label>
+            <div class="control">
+              <input class="input" formControlName='AvailaibilityStarts' type="date" 
+              required> 
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label req">Description</label>
+            <div class="control">
+              <input class="input" maxlength=8000 pattern="^[a-zA-Z ]*$" 
+              formControlName='Description' type="text" placeholder="Description" 
+              required> 
+            </div>
+            <div 
+            *ngIf="formTemplate.controls.Description.invalid && formTemplate.controls.Description.touched">
+              <p *ngIf="formTemplate.controls.Description.errors?.pattern " 
+              class="help is-danger">Description must contains only characters.</p>
+          </div>
+        </div>
+
+        <div class="field">
+            <div class="control">
+              <label class="checkbox">
+                <input formControlName='IsFeatured' value="false" type="checkbox">
+                Is Featured
+              </label>
+            </div>
+        </div>
+
+        
+        <div class="field">
+            <label class="label req">Movie</label>
+            <div class="control">
+              <input class="input" accept="video/*" (change)='MovieChange($event)' 
+              formControlName='ContentPath' type="file" placeholder="Text input"
+               required> 
+            </div>
+        </div>
+          
+        <div class="control">
+            <button type="submit" [disabled]='formTemplate.invalid || uploading' 
+            class="button is-link">Submit</button>
+          </div>
+          <br>
+          <article *ngIf="uploading" class="message is-warning">
+            <div class="message-body">
+              Uploading...
+            </div>  
+          </article>
+          <article *ngIf="uploadDone" class="message is-success">
+            <div class="message-body">
+              Uploading Done
+            </div>  
+          </article>
+    </div>
+    </div>
+</form>

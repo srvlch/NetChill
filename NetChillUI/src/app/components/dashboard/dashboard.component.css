@@ -1,0 +1,12 @@
+.renderer{
+    padding: 40px;
+    border: 1px black solid;
+}
+
+.tabs{
+    margin-bottom: 0;
+}
+
+.panel{
+    margin:40px
+}

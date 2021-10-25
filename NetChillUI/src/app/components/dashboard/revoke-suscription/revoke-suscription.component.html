@@ -1,0 +1,42 @@
+<form #f='ngForm' ngForm (ngSubmit)='submit(f)'>
+    <div class="field">
+        <label class="label">User Name</label>
+        <div class="control">
+          <input ngModel name="userName" #name='ngModel' class="input" 
+          type="text" placeholder="Text input" required>
+        </div>
+      </div>
+    
+      <div class="field is-grouped">
+        <div class="control">
+          <button class="button is-link" 
+          [disabled]='f.invalid || inProgress'>Submit</button>
+
+        </div>
+      </div>
+</form>
+
+  <table *ngIf="users!=null" style="width: 50%; margin-left: 25%;padding: 20px;" 
+  class="table table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+      <thead>
+          <tr>
+              <th>
+                  User Name
+              </th>
+              <th>User Email</th>
+              <th>Action</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let user of users">
+              <td>{{ user.FullName }}</td>
+              <td>{{ user.Email }}</td>
+              <td>
+                <button style="width: 80%;" class="button is-danger" 
+                (click)="revoke(user.Id,$event)">{{user.IsRevoked?"Revoked":"Revoke"}}</button>
+            </td>
+          </tr>
+      </tbody>
+  </table>
+
+  

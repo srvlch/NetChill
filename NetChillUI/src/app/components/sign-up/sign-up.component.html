@@ -1,0 +1,73 @@
+<div class="columns">
+    <div class="column"></div>
+    <div class="column card" style="padding:20px;margin: 20px;">
+       <div class="is-flex is-justify-content-center">
+         <h1 class="title is-1">Sign Up</h1>
+       </div>
+<form ngForm #form='ngForm' class="form" (ngSubmit)="submit(form)">
+    <p class="error">{{ errorMsg }}</p>
+    <div class="field">
+        <label class="label req">Full Name</label>
+        <div class="control">
+        <input class="input" ngModel #fullName='ngModel' name="fullName" maxlength=255 pattern="^[a-zA-Z ]*$" type="text" placeholder="Enter your Full Name" required>
+        </div>
+        <div *ngIf="fullName.invalid && fullName.touched">
+            <p *ngIf="fullName.errors?.pattern " class="help is-danger">Name must contains only characters.</p>
+            <p *ngIf="fullName.errors?.required" class="help is-danger">Name is Required</p>
+        </div>
+        
+    </div>
+    
+    <div class="field">
+        <label class="label req">Email</label>
+        <div class="control">
+        <input class="input" ngModel name="email" #email='ngModel' pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$"  type="text" placeholder="Enter your Email" required>
+        </div>
+        <div *ngIf="email.invalid && email.touched">
+            <p *ngIf="email.errors?.pattern " class="help is-danger">Please Enter Valid Email.</p>
+            <p *ngIf="email.errors?.required" class="help is-danger">Email is Required</p>
+        </div>
+    </div>
+    
+    <div class="field">
+        <label class="label req">Password</label>
+        <div class="control">
+        <input class="input" pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$" 
+        ngModel name="password" #password='ngModel' type="password" placeholder="Enter Password" required>
+        </div>
+        <div *ngIf="password.invalid && password.touched">
+            <p *ngIf="password.errors?.pattern " class="help is-danger">Password lenght must be atleast 8 and it must have at-least 1 special character, 1 number and 1 alphabet</p>
+            <p *ngIf="password.errors?.required" class="help is-danger">Password is Required</p>
+        </div>
+    </div>
+
+    <div class="field">
+        <label class="label req">Confirm Password</label>
+        <div class="control">
+        <input class="input" pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$" 
+        ngModel name="ConfirmPassword" #confirmPassword='ngModel' type="password" placeholder="Confirm Password" required>
+        </div>
+        <div *ngIf="confirmPassword.invalid && confirmPassword.touched">
+            <p *ngIf="confirmPassword.errors?.pattern " class="help is-danger">Password lenght must be atleast 8 and it must have at-least 1 special character, 1 number and 1 alphabet</p>
+            <p *ngIf="confirmPassword.errors?.required" class="help is-danger">Password is Required</p>
+        </div>
+    </div>
+
+    <div class="field">
+        <div class="control">
+          <label class="checkbox">
+            <input name="T&C" ngModel type="checkbox" required>
+            I agree to the terms and conditions.
+          </label>
+        </div>
+      </div>
+
+    <div class="field is-grouped">
+        <div class="control">
+        <button class="button is-link" [disabled]="form.invalid || processing">Submit</button>
+        </div>
+    </div>
+</form>
+    </div>
+    <div class="column"></div>
+</div>
